@@ -1,0 +1,16 @@
+{
+  "name": "formatq",
+  "version": "1.0.0",
+  "description": "Agrega un formato perzonalozado",
+  "main": "chdi.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Luis Angel Peña",
+  "license": "ISC",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "iconv-lite": "^0.4.24",
+    "path": "^0.12.7"
+  }
+}
