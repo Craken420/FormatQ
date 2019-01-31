@@ -1,8 +1,8 @@
 {
   "name": "formatq",
   "version": "1.0.0",
-  "description": "Agrega un formato perzonalozado",
-  "main": "chdi.js",
+  "description": "Elimina el código basura y agrega tabulacion al contenido de los componentes Intelisis ",
+  "main": "formatQ.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
