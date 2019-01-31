@@ -12,7 +12,6 @@ const regEx  = require('./Utilerias/RegEx/jsonRgx')
 
 const carpeta = 'Archivos\\'
 
-
 leerCarpeta.obtenerArchivos(carpeta)
     .then(archivos => {
         filtro.filtrarExtension(archivos).forEach(archivo => {
