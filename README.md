@@ -12,6 +12,10 @@ Instalar las dependencias
 Cambiar a la rama formatQ en el repositorio Utilerias
 
     git checkout formatQ
+    
+Crea la carpeta Testing
+
+    mkdir Testing
    
 Correr herramienta
 
