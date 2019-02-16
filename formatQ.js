@@ -1,23 +1,37 @@
 /*** Archivos ***/
-const leerCarpeta = require('./Utilerias/OperadoresArchivos/leerCarpeta')
+const { leerCarpetaFiltrada } = require('./Utilerias/OperadoresArchivos/readDirOnlyFile')
 
 /*** Operadores de archivos ***/
-const filtro = require('./Utilerias/OperadoresArchivos/filtrarArchivos')
 const pcrArchivos = require('./Utilerias/OperadoresArchivos/procesadorArchivos')
 const recodificar = require('./Utilerias/Codificacion/contenidoRecodificado')
 
 /*** Operadores de cadena ***/
-const addTab = require('./Utilerias/OperarCadenas/clsBauraAddTabContenidoCmp')
 const regEx  = require('./Utilerias/RegEx/jsonRgx')
 
-const carpeta = 'Archivos\\'
+const carpeta= 'Testing\\'
 
-leerCarpeta.obtenerArchivos(carpeta)
+/***
+ * Función que elimina los comentarios en linea intelisis, 
+ * los saltos de linea vacio,
+ * las tabulaciones y los espacios entre palabras mayor a uno.
+ * A su vez agrega tabulacion al contenido de los componentes Intelisis
+ * @param {} contenido a ser editado
+ * @returns {} texto modificado con tabulador en contenido del componente
+ ***/
+const clsCodigoAddTab = texto => {
+    texto = texto + '\n['
+    texto = regEx.Borrar.clsTextoBasura(texto)
+    texto = regEx.Agregar.addTabContenidoCmp(texto)
+    texto = regEx.Borrar.clsIniCorcheteLineaVacia(texto)
+    return texto
+}
+
+leerCarpetaFiltrada(carpeta, ['.vis','.frm','.esp','.tbl','.rep','.dlg'])
     .then(archivos => {
-        filtro.filtrarExtension(archivos).forEach(archivo => {
+        archivos.forEach(archivo => {
              pcrArchivos.crearArchivo(
-                'Testing\\'+ archivo.replace(regEx.expresiones.nomArchivoEnRuta, ''),
-                addTab.clsCodigoAddTab(
+                archivo,
+                clsCodigoAddTab(
                     recodificar.extraerContenidoRecodificado(archivo)
                 )
             )
